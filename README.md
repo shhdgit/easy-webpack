@@ -8,8 +8,8 @@
     ```bash
       $ source bash/init.sh
     ```
-  4.
 
+  4.
     ```bash
       $ source bash/xxx.sh
     ```
