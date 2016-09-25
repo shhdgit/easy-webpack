@@ -1,0 +1,13 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config ./build/webpack.config.dev.js --hot --inline",
+    "build": "rm -rf ./public/dist && webpack --config ./build/webpack.config.prod.js"
+  },
+  "keywords": [],
+  "author": "Suhaha <jklopsdfw@gmail.com>",
+  "license": "ISC"
+}

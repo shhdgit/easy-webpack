@@ -1,6 +1,6 @@
 ## Usage
 
-  1.Copy initial file & bash file
+  1.Copy one version file & bash file
 
   2.Choose bash
 
