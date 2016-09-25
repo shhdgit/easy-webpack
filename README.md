@@ -13,3 +13,5 @@
     ```
       $ source bash/xxx.sh
     ```
+
+  5.Change project name & entry name
