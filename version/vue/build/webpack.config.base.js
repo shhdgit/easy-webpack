@@ -12,7 +12,12 @@ module.exports = {
   },
   resolve: {
     extensions: [ '', '.js', '.vue' ],
-    alias: {}
+    alias: {
+      'vuex-actions': `${ PROJECT_ROOT }/src/vuex/action`,
+      'component': `${ PROJECT_ROOT }/src/component`,
+      'view': `${ PROJECT_ROOT }/src/view`,
+      'public': `${ PROJECT_ROOT }/public`
+    }
   },
   module: {
     loaders: [
