@@ -6,7 +6,7 @@ const PROJECT_ROOT = require( './config' ).PROJECT_ROOT
 
 module.exports = merge( BASE_CONFIG, {
   output: {
-    filename: '[name].[hash:8].js',
+    filename: '[name].[chunkhash:8].js',
     chunkFilename: 'chunk/[name].[chunkhash:8].js'
   },
   plugins: [

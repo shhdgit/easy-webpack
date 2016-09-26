@@ -7,7 +7,7 @@ const PROJECT_ROOT = require( './config' ).PROJECT_ROOT
 
 module.exports = merge( BASE_CONFIG, {
   output: {
-    filename: '[name].[hash:8].js',
+    filename: '[name].[chunkhash:8].js',
     chunkFilename: 'chunk/[name].[chunkhash:8].js'
   },
   vue: {
@@ -16,11 +16,16 @@ module.exports = merge( BASE_CONFIG, {
     }
   },
   plugins: [
-    new ExtractTextPlugin( 'asset/style/buyer.[chunkhash:8].css' ),
+    new ExtractTextPlugin( 'asset/style/index.[contenthash:8].css' ),
     new HtmlWebpackPlugin( {
       filename: '../../index.html',
       template: `${ PROJECT_ROOT }/src/prod.html`,
       inject: true
+    } ),
+    new webpack.optimize.CommonsChunkPlugin( {
+      name: 'common',
+      filename: 'chunk/common.[chunkhash:8].js',
+      minChunks: 2
     } ),
     new webpack.optimize.UglifyJsPlugin( {
       minimize : true,

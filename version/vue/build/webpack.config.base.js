@@ -1,4 +1,5 @@
 const PROJECT_ROOT = require( './config' ).PROJECT_ROOT
+const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
 
 module.exports = {
   entry: {
@@ -33,8 +34,17 @@ module.exports = {
         include: [
           `${ PROJECT_ROOT }/src/`
         ]
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'
       }
     ]
+  },
+  vue: {
+    loaders: {
+      css: ExtractTextPlugin.extract( 'style-loader', 'css-loader', 'less-loader' )
+    }
   },
   externals: {
     'vue': 'Vue',

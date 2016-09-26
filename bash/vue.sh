@@ -5,6 +5,7 @@ npm install --save-dev vue \
                        vue-style-loader \
                        extract-text-webpack-plugin \
                        css-loader \
+                       style-loader \
                        file-loader \
                        url-loader \
                        raw-loader \
