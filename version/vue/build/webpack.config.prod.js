@@ -16,7 +16,7 @@ module.exports = merge( BASE_CONFIG, {
     }
   },
   plugins: [
-    new ExtractTextPlugin( 'asset/style/index.[contenthash:8].css' ),
+    new ExtractTextPlugin( 'asset/style/[name].[contenthash:8].css' ),
     new HtmlWebpackPlugin( {
       filename: '../../index.html',
       template: `${ PROJECT_ROOT }/src/prod.html`,
