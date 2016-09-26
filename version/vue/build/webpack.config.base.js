@@ -36,5 +36,10 @@ module.exports = {
       }
     ]
   },
-  externals: {}
+  externals: {
+    'vue': 'Vue',
+    'vue-router': 'VueRouter',
+    'vuex': 'Vuex',
+    'vue-resource': 'VueResource'
+  }
 }
