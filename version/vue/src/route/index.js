@@ -1,12 +1,19 @@
 // CDN Version. NPM Version need add Vue.ues( VueRouter )
 import VueRouter from 'vue-router'
 
-let router = new VueRouter()
-
-router.map( {} )
-
-router.redirect( {
-  '*': '/'
+const router = new VueRouter( {
+  routes: [
+    {
+      name: 'home',
+      path: '/',
+      component: resolve => require( [ 'view/home' ], resolve )
+    },
+    {
+      path: '*',
+      redirect: '/'
+    }
+  ]
 } )
 
-export router
+export default router
+

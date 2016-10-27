@@ -1,4 +1,4 @@
-const PROJECT_ROOT = require( './config' ).PROJECT_ROOT
+const PROJECT_ROOT = require( './config' ).PROJECT_ROOT;
 
 module.exports = {
   entry: {
@@ -25,4 +25,4 @@ module.exports = {
     ]
   },
   externals: {}
-}
+};

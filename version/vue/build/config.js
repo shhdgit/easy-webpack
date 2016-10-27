@@ -1,3 +1,3 @@
-const path = require( 'path' )
+const path = require( 'path' );
 
-exports.PROJECT_ROOT = path.resolve( __dirname, '../' )
+exports.PROJECT_ROOT = path.resolve( __dirname, '../' );

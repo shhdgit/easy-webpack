@@ -14,4 +14,4 @@ npm install --save-dev vue \
 npm install --save vue-router \
                    vue-resource \
                    vuex \
-                   vuex-router-sync
+                   vuex-router-sync@next

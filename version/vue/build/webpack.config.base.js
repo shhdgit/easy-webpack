@@ -1,5 +1,5 @@
-const PROJECT_ROOT = require( './config' ).PROJECT_ROOT
-const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
+const PROJECT_ROOT = require( './config' ).PROJECT_ROOT;
+const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 module.exports = {
   entry: {
@@ -52,4 +52,4 @@ module.exports = {
     'vuex': 'Vuex',
     'vue-resource': 'VueResource'
   }
-}
+};

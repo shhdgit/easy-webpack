@@ -1,9 +1,9 @@
-const webpack = require( 'webpack' )
-const merge = require( 'webpack-merge' )
-const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
-const HtmlWebpackPlugin = require( 'html-webpack-plugin' )
-const BASE_CONFIG = require( './webpack.config.base' )
-const PROJECT_ROOT = require( './config' ).PROJECT_ROOT
+const webpack = require( 'webpack' );
+const merge = require( 'webpack-merge' );
+const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+const BASE_CONFIG = require( './webpack.config.base' );
+const PROJECT_ROOT = require( './config' ).PROJECT_ROOT;
 
 module.exports = merge( BASE_CONFIG, {
   output: {
@@ -41,4 +41,4 @@ module.exports = merge( BASE_CONFIG, {
       }
     } )
   ]
-} )
+} );
