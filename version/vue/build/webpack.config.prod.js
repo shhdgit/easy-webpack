@@ -10,11 +10,6 @@ module.exports = merge( BASE_CONFIG, {
     filename: '[name].[chunkhash:8].js',
     chunkFilename: 'chunk/[name].[chunkhash:8].js'
   },
-  vue: {
-    loaders: {
-      css: ExtractTextPlugin.extract( 'vue-style-loader', 'css' )
-    }
-  },
   plugins: [
     new ExtractTextPlugin( 'asset/style/[name].[contenthash:8].css' ),
     new HtmlWebpackPlugin( {
