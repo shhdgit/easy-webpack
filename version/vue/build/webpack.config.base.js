@@ -14,7 +14,7 @@ module.exports = {
   resolve: {
     extensions: [ '', '.js', '.vue' ],
     alias: {
-      'vuex-actions': `${ PROJECT_ROOT }/src/vuex/action`,
+      'vuex': `${ PROJECT_ROOT }/src/vuex`,
       'component': `${ PROJECT_ROOT }/src/component`,
       'view': `${ PROJECT_ROOT }/src/view`,
       'public': `${ PROJECT_ROOT }/public`
