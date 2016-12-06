@@ -41,7 +41,7 @@ module.exports = merge(BASE_CONFIG, {
       }
     }),
     new ExtractTextPlugin({
-      filename: 'asset/style/[name].[contenthash:8].css',
+      filename: 'styles/[name].[contenthash:8].css',
       allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({
