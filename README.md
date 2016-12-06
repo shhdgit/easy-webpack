@@ -1,17 +1,10 @@
 ## Usage
 
-  1.Copy one version file & bash file
+  1.Copy one version file
 
-  2.Choose bash
-
-  3.
+  2.
     ```
-      $ source bash/init.sh
+      source build/init.sh
     ```
 
-  4.
-    ```
-      $ source bash/xxx.sh
-    ```
-
-  5.Change project name & entry name
+  3.Change project name & entry name

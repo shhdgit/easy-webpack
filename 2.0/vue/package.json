@@ -1,0 +1,13 @@
+{
+  "name": "easy-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config ./build/webpack.config.dev.js --content-base ./public --hot --inline",
+    "build": "rm -rf ./public/dist && webpack --config ./build/webpack.config.prod.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
