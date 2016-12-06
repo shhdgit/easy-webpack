@@ -5,7 +5,6 @@ npm install --save-dev webpack@beta \
                        extract-text-webpack-plugin@beta \
                        babel-core \
                        babel-loader \
-                       # babel-plugin-transform-runtime \
                        babel-preset-es2015 \
                        babel-preset-stage-2 \
                        babel-runtime \

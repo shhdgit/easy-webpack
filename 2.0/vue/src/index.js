@@ -1,10 +1,12 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 import {sync} from 'vuex-router-sync'
+import router from 'router'
+import store from 'store'
 import App from 'view/App'
 
-Vue.use(Vuex)
-
+sync(store, router)
 new Vue({
-  ...App
+  ...App,
+  router,
+  store
 }).$mount('#app')
