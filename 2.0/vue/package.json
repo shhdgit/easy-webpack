@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config ./build/webpack.config.dev.js --content-base ./public --hot --inline",
-    "build": "rm -rf ./public/dist && webpack --config ./build/webpack.config.prod.js"
+    "prebuild": "rm -rf ./public/dist",
+    "build": "webpack --config ./build/webpack.config.prod.js",
+    "predepend": "rm -rf ./public/vendors",
+    "depend": "webpack --config ./build/dll.webpack.config.js",
+    "postdepend": "npm run build"
   },
   "keywords": [],
   "author": "",

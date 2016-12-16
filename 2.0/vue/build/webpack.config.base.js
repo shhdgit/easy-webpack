@@ -2,17 +2,16 @@ const path = require('path')
 const ROOT = path.resolve(__dirname, '../')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    vendor1: ['vue'],
-    vendor2: ['vue-router', 'superagent', 'vuex'],
     main: `${ROOT}/src/index`
   },
   output: {
-    path: `${ROOT}/public/dist`,
-    filename: '[name].js',
-    chunkFilename: 'chunks/[name].js'
+    path: `${ROOT}/public`,
+    filename: 'dist/[name].js',
+    chunkFilename: 'dist/chunks/[name].js'
   },
   resolve: {
     extensions: ['.js', '.json', '.vue'],
@@ -45,5 +44,20 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: `${ROOT}/public/index.origin.html`,
+      inject: true
+    }),
+    new webpack.DllReferencePlugin({
+      context: `${ROOT}/config`,
+      manifest: require('../config/vendor1.manifest.json')
+    }),
+    new webpack.DllReferencePlugin({
+      context: `${ROOT}/config`,
+      manifest: require('../config/vendor2.manifest.json')
+    })
+  ]
 }

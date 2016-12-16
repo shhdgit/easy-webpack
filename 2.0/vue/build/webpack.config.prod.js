@@ -2,14 +2,13 @@ const path = require('path')
 const ROOT = path.resolve(__dirname, '../')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BASE_CONFIG = require('./webpack.config.base')
 
 module.exports = merge(BASE_CONFIG, {
   output: {
-    filename: '[name].[chunkhash:8].js',
-    chunkFilename: 'chunks/[name].[chunkhash:8].js'
+    filename: 'dist/[name].[chunkhash:8].js',
+    chunkFilename: 'dist/chunks/[name].[chunkhash:8].js'
   },
   module: {
     rules: [
@@ -41,7 +40,7 @@ module.exports = merge(BASE_CONFIG, {
       }
     }),
     new ExtractTextPlugin({
-      filename: 'styles/[name].[contenthash:8].css',
+      filename: 'dist/styles/[name].[contenthash:8].css',
       allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -53,16 +52,6 @@ module.exports = merge(BASE_CONFIG, {
         comments: false
       },
       sourceMap: false
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor2', 'vendor1'],
-      filename: 'vendors/[name].[chunkhash:8].js',
-      minChunks: Infinity
-    }),
-    new HtmlWebpackPlugin({
-      filename: `${ROOT}/public/index.html`,
-      template: `${ROOT}/src/prod.html`,
-      inject: true
     }),
     new webpack.DefinePlugin({
       'process.env': {
