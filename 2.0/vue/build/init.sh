@@ -22,6 +22,6 @@ npm install --save-dev webpack@beta \
                        less-loader && \
 npm install --save vue \
                    vue-router \
-                   superagent \
+                   axios \
                    vuex \
                    vuex-router-sync@next

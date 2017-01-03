@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     vendor1: ['vue'],
-    vendor2: ['vue-router', 'superagent', 'vuex']
+    vendor2: ['vue-router', 'axios', 'vuex']
   },
   output: {
     path: `${ROOT}/public`,
@@ -26,6 +26,16 @@ module.exports = {
       chunksSortMode: function(entry1, entry2) {
         return 1
       }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: false
     })
   ]
 }
