@@ -19,13 +19,11 @@ module.exports = {
     alias: {
       'public': `${ROOT}/public`,
       'src': `${ROOT}/src`,
-      'component': `${ROOT}/src/components`,
-      'UIcomponent': `${ROOT}/src/components/UI`,
-      'Vcomponent': `${ROOT}/src/components/view`,
-      'view': `${ROOT}/src/views`,
+      'components': `${ROOT}/src/components`,
+      'views': `${ROOT}/src/components/views`,
       'store': `${ROOT}/src/store`,
-      'mixin': `${ROOT}/src/mixins`,
-      'filter': `${ROOT}/src/filters`,
+      'mixins': `${ROOT}/src/mixins`,
+      'filters': `${ROOT}/src/filters`,
       'api': `${ROOT}/src/api`,
       'assets': `${ROOT}/src/assets`,
       'router': `${ROOT}/src/router`

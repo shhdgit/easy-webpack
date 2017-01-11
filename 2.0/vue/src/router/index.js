@@ -7,12 +7,12 @@ export default new VueRouter({
     {
       name: 'home',
       path: '/',
-      component: () => System.import('view/home')
+      component: r => require.ensure([], () => r(require('views/home')), '1st-screen')
     },
     {
       name: '404',
       path: '*',
-      component: () => System.import('view/404')
+      component: r => require.ensure([], () => r(require('views/404')), '404')
     }
   ]
 })
