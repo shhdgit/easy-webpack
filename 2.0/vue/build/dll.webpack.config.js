@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: `${ROOT}/public`,
     filename: 'vendors/[name].[chunkhash:8].js',
+    publicPath: '/',
     library: '[name]_[chunkhash:8]'                   // 必填项，将此dll包暴露到window上，给app.js调用
   },
   plugins: [

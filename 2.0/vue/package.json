@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config ./build/webpack.config.dev.js --content-base ./public --hot --inline",
+    "dev": "webpack-dev-server --config ./build/webpack.config.dev.js",
     "prebuild": "rm -rf ./public/dist",
-    "build": "webpack --config ./build/webpack.config.prod.js",
-    "predepend": "rm -rf ./public/vendors",
-    "depend": "webpack --config ./build/dll.webpack.config.js",
-    "postdepend": "npm run build"
+    "build": "webpack --config ./build/webpack.config.prod.js --hide-modules --display-error-details",
+    "predll": "rm -rf ./public/vendors",
+    "dll": "webpack --config ./build/dll.webpack.config.js"
   },
   "keywords": [],
   "author": "",

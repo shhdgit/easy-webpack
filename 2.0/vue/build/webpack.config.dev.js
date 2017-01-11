@@ -5,6 +5,13 @@ const merge = require('webpack-merge')
 const BASE_CONFIG = require('./webpack.config.base')
 
 module.exports = merge(BASE_CONFIG, {
+  entry: {
+    main: [
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      `${ROOT}/src/index`
+    ]
+  },
   module: {
     rules: [
       {
@@ -13,5 +20,19 @@ module.exports = merge(BASE_CONFIG, {
       }
     ]
   },
-  devtool: 'eval-source-map'
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devtool: 'eval-source-map',
+  devServer: {
+    hot: true,
+    contentBase: './public',
+    historyApiFallback: true,
+    stats: {
+      warnings: false,
+      children: false,
+      chunks: false,
+      chunkModules: false
+    }
+  }
 })
