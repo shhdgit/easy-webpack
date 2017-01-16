@@ -1,7 +1,6 @@
 const path = require('path')
 const ROOT = path.resolve(__dirname, '../')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -23,10 +22,10 @@ module.exports = {
       'views': `${ROOT}/src/components/views`,
       'store': `${ROOT}/src/store`,
       'mixins': `${ROOT}/src/mixins`,
-      'filters': `${ROOT}/src/filters`,
       'api': `${ROOT}/src/api`,
       'assets': `${ROOT}/src/assets`,
-      'router': `${ROOT}/src/router`
+      'config': `${ROOT}/src/config`,
+      'service': `${ROOT}/src/service`
     }
   },
   module: {
