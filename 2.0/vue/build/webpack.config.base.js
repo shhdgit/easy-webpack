@@ -46,7 +46,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: `${ROOT}/public/index.origin.html`,
+      template: `${ROOT}/public/index.html`,
       inject: true
     }),
     new webpack.DllReferencePlugin({
