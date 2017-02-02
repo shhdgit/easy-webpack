@@ -21,7 +21,7 @@ module.exports = {
       name: '[name]_[chunkhash:8]'                    // 必填项，manifest的name
     }),
     new HtmlWebpackPlugin({
-      filename: `${ROOT}/src/index.html`,
+      filename: `${ROOT}/src/index.dll.html`,
       template: `${ROOT}/src/index.html`,
       inject: true,
       chunksSortMode: function(entry1, entry2) {
@@ -37,6 +37,11 @@ module.exports = {
         comments: false
       },
       sourceMap: false
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
     })
   ]
 }

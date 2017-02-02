@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "predll": "rm -rf ./public/vendors ./src/index.dll.html",
+    "dll": "webpack --config ./build/dll.webpack.config.js",
+    "predev": "cross-env NODE_ENV=development npm run dll",
     "dev": "webpack-dev-server --config ./build/webpack.config.dev.js",
-    "prebuild": "rm -rf ./public/dist",
-    "build": "webpack --config ./build/webpack.config.prod.js --hide-modules --display-error-details",
-    "predll": "rm -rf ./public/vendors",
-    "dll": "webpack --config ./build/dll.webpack.config.js"
+    "prebuild": "cross-env NODE_ENV=production rm -rf ./public/dist && npm run dll",
+    "build": "webpack --config ./build/webpack.config.prod.js --hide-modules --display-error-details"
   },
   "keywords": [],
   "author": "",
