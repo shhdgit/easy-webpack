@@ -1,6 +1,8 @@
-npm i -D webpack@beta \
+#!/bin/bash
+
+npm i -D webpack \
          webpack-merge \
-         webpack-dev-server@beta \
+         webpack-dev-server \
          html-webpack-plugin \
          extract-text-webpack-plugin@beta \
          babel-core \
@@ -25,4 +27,4 @@ npm i -S vue \
          vue-router \
          axios \
          vuex \
-         vuex-router-sync@next
+         vuex-router-sync
