@@ -14,9 +14,9 @@ module.exports = merge(BASE_CONFIG, {
     rules: [
       {
         test: /\.(css|less)$/,
-        loader: ExtractTextPlugin.extract({
-          loader: 'css-loader!less-loader',
-          fallbackLoader: 'style-loader'
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader!less-loader',
+          fallback: 'style-loader'
         })
       }
     ]
@@ -28,12 +28,12 @@ module.exports = merge(BASE_CONFIG, {
         vue: {
           loaders: {
             css: ExtractTextPlugin.extract({
-              loader: 'css-loader',
-              fallbackLoader: 'vue-style-loader'
+              use: 'css-loader',
+              fallback: 'vue-style-loader'
             }),
             less: ExtractTextPlugin.extract({
-              loader: 'css-loader!less-loader',
-              fallbackLoader: 'vue-style-loader'
+              use: 'css-loader!less-loader',
+              fallback: 'vue-style-loader'
             })
           }
         }
