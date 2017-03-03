@@ -40,7 +40,23 @@ module.exports = {
         use: 'babel-loader',
         include: `${ROOT}/src/`,
         exclude: /node_modules/
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: 'dist/images/[name].[contenthash:8].[ext]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: 'dist/fonts/[name].[contenthash:8].[ext]'
+        }
+      },
     ]
   },
   plugins: [

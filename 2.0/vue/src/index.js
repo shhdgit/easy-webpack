@@ -6,6 +6,9 @@ import storeConfig from 'store'
 import router from 'config/routes'
 import HttpPlugin from 'api/http'
 import App from 'components/App'
+import 'assets/icon/iconfont.js'
+import 'assets/styles/reset.css'
+import 'assets/styles/functional.less'
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(HttpPlugin)
