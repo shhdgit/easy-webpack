@@ -1,10 +1,8 @@
-import {app} from 'store/util/types'
-
 const state = {}
-
 const mutations = {}
 
 export default {
+  namespaced: true,
   state,
-  mutations
+  mutations,
 }
