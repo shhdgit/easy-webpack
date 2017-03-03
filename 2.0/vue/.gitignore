@@ -1,7 +1,7 @@
 **/.idea/**
 **/node_modules/**
-**/public/dist/**
-**/public/vendors/**
+public/*
+!public/images
 
 **/.DS_Store
 **/npm-debug.log
