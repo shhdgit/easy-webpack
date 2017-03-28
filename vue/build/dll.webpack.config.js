@@ -1,7 +1,9 @@
+const os = require('os')
 const path = require('path')
 const ROOT = path.resolve(__dirname, '../')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsParallelPlugin = require('webpack-uglify-parallel')
 
 module.exports = {
   entry: {
@@ -28,15 +30,14 @@ module.exports = {
         return 1
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsParallelPlugin({
+      workers: os.cpus().length,
       mangle: true,
-      compress: {
-        warnings: false
-      },
-      output: {
-        comments: false
-      },
-      sourceMap: false
+      compressor: {
+        warnings: false,
+        drop_console: true,
+        drop_debugger: true
+       }
     }),
     new webpack.DefinePlugin({
       'process.env': {

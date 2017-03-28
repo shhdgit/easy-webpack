@@ -3,6 +3,7 @@
 yarn add -D webpack \
             webpack-merge \
             webpack-dev-server \
+            webpack-uglify-parallel \
             html-webpack-plugin \
             extract-text-webpack-plugin@beta \
             babel-core \

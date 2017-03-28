@@ -1,8 +1,10 @@
+const os = require('os')
 const path = require('path')
 const ROOT = path.resolve(__dirname, '../')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJsParallelPlugin = require('webpack-uglify-parallel')
 const BASE_CONFIG = require('./webpack.config.base')
 
 module.exports = merge(BASE_CONFIG, {
@@ -43,15 +45,14 @@ module.exports = merge(BASE_CONFIG, {
       filename: 'dist/styles/[name].[contenthash:8].css',
       allChunks: true
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsParallelPlugin({
+      workers: os.cpus().length,
       mangle: true,
-      compress: {
-        warnings: false
-      },
-      output: {
-        comments: false
-      },
-      sourceMap: false
-    })
+      compressor: {
+        warnings: false,
+        drop_console: true,
+        drop_debugger: true
+       }
+    }),
   ]
 })
