@@ -19,13 +19,14 @@ module.exports = {
       'public': `${ROOT}/public`,
       'src': `${ROOT}/src`,
       'components': `${ROOT}/src/components`,
-      'views': `${ROOT}/src/components/views`,
+      'views': `${ROOT}/src/views`,
       'store': `${ROOT}/src/store`,
       'mixins': `${ROOT}/src/mixins`,
       'api': `${ROOT}/src/api`,
       'assets': `${ROOT}/src/assets`,
       'config': `${ROOT}/src/config`,
-      'service': `${ROOT}/src/service`
+      'service': `${ROOT}/src/service`,
+      'plugins': `${ROOT}/src/plugins`,
     }
   },
   module: {

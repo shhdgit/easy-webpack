@@ -1,6 +1,6 @@
 #!/bin/bash
 
-webpack --config ./build/webpack.config.prod.js && \
+yarn run build && \
 gaa && \
 gcam $@ && \
 ggpush
