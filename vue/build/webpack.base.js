@@ -19,6 +19,7 @@ module.exports = {
       'public': `${ROOT}/public`,
       'src': `${ROOT}/src`,
       'components': `${ROOT}/src/components`,
+      'ui': `${ROOT}/src/components/UI`,
       'views': `${ROOT}/src/views`,
       'store': `${ROOT}/src/store`,
       'mixins': `${ROOT}/src/mixins`,

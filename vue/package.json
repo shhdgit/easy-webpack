@@ -6,11 +6,11 @@
   "scripts": {
     "predll": "rm -rf ./public/vendors ./public/index.dll.html",
     "dll": "webpack --config ./build/webpack.dll.js",
-    "dll:dev": "cross-env NODE_ENV=development yarn run dll",
-    "dll:prod": "cross-env NODE_ENV=production yarn run dll",
-    "predev": "yarn run dll:dev",
+    "dll:dev": "cross-env NODE_ENV=development npm run dll",
+    "dll:prod": "cross-env NODE_ENV=production npm run dll",
+    "predev": "npm run dll:dev",
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
-    "prebuild": "rm -rf ./public/dist && yarn run dll:prod",
+    "prebuild": "rm -rf ./public/dist && npm run dll:prod",
     "build": "webpack --config ./build/webpack.prod.js --hide-modules --display-error-details"
   },
   "keywords": [],

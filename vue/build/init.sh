@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yarn add -D webpack \
+npm add -D webpack \
             webpack-merge \
             webpack-dev-server \
             webpack-uglify-parallel \
@@ -24,7 +24,7 @@ yarn add -D webpack \
             raw-loader \
             less \
             less-loader && \
-yarn add vue \
+npm add vue \
          vue-router \
          axios \
          vuex \
