@@ -19,6 +19,8 @@ npm add -D webpack \
            vue-style-loader \
            css-loader \
            style-loader \
+           stylus \
+           stylus-loader \
            file-loader \
            url-loader \
            raw-loader \
