@@ -10,6 +10,10 @@ module.exports = merge(BASE_CONFIG, {
       {
         test: /\.(css|less)$/,
         use: ['style-loader', 'css-loader?sourceMap', 'less-loader']
+      },
+      {
+        test: /\.styl$/,
+        use: ['style-loader', 'css-loader?sourceMap', 'stylus-loader']
       }
     ]
   },
@@ -22,6 +26,5 @@ module.exports = merge(BASE_CONFIG, {
     contentBase: './public',
     historyApiFallback: true,
     clientLogLevel: "error",
-    stats: "errors-only"
   }
 })

@@ -1,20 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
-import {sync} from 'vuex-router-sync'
 import storeConfig from 'store'
 import router from 'config/routes'
 import HttpPlugin from 'plugins/http'
-import App from 'components/App'
+import App from 'components/layout/Layout'
 import 'assets/icon/iconfont.js'
-import 'assets/styles/reset.css'
-import 'assets/styles/functional.less'
+import 'assets/styles/reset.styl'
+import 'assets/styles/functional.styl'
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(HttpPlugin)
 
 const store = new Vuex.Store(storeConfig)
-sync(store, router)
 new Vue({
   ...App,
   router,
