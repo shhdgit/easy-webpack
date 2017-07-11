@@ -9,9 +9,9 @@
     "dll:dev": "cross-env NODE_ENV=development npm run dll",
     "dll:prod": "cross-env NODE_ENV=production npm run dll",
     "predev": "npm run dll:dev",
-    "dev": "webpack-dev-server --config ./build/webpack.dev.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js",
     "prebuild": "rm -rf ./public/dist && npm run dll:prod",
-    "build": "webpack --config ./build/webpack.prod.js --hide-modules --display-error-details"
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js --hide-modules --display-error-details"
   },
   "keywords": [],
   "author": "",
