@@ -10,6 +10,7 @@ npm add -D webpack \
            babel-core \
            babel-loader \
            babel-preset-latest \
+           babel-preset-stage-2 \
            babel-runtime \
            cross-env \
            vue-template-compiler \

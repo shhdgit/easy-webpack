@@ -26,5 +26,12 @@ module.exports = merge(BASE_CONFIG, {
     contentBase: './public',
     historyApiFallback: true,
     clientLogLevel: "error",
+    proxy: {
+      '/api': {
+        target: 'http://localhost:9090',
+        pathRewrite: { "^/api" : "" },
+        secure: false,
+      },
+    },
   }
 })
