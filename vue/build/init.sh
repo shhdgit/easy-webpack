@@ -5,11 +5,11 @@ npm add -D webpack \
            webpack-dev-server \
            webpack-uglify-parallel \
            html-webpack-plugin \
+           json-server \
            extract-text-webpack-plugin@beta \
            babel-core \
            babel-loader \
-           babel-preset-es2015 \
-           babel-preset-stage-2 \
+           babel-preset-latest \
            babel-runtime \
            cross-env \
            vue-template-compiler \

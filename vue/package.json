@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "mock": "json-server --config ./mock/json-server.json ./mock/db.json",
     "predll": "rm -rf ./public/vendors ./public/index.dll.html",
     "dll": "webpack --config ./build/webpack.dll.js",
     "dll:dev": "cross-env NODE_ENV=development npm run dll",
