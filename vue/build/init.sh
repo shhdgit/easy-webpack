@@ -23,6 +23,7 @@ npm add -D webpack \
            style-loader \
            stylus \
            stylus-loader \
+           shx \
            file-loader \
            url-loader \
            raw-loader \

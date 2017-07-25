@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "mock": "json-server --config ./mock/json-server.json ./mock/db.json",
-    "predll": "rm -rf ./public/vendors ./public/index.dll.html",
+    "predll": "shx rm -rf ./public/vendors ./public/index.dll.html",
     "dll": "webpack --config ./build/webpack.dll.js",
     "dll:dev": "cross-env NODE_ENV=development npm run dll",
     "dll:prod": "cross-env NODE_ENV=production npm run dll",
     "predev": "npm run dll:dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js",
-    "prebuild": "rm -rf ./public/dist && npm run dll:prod",
+    "prebuild": "shx rm -rf ./public/dist && npm run dll:prod",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js --hide-modules --display-error-details"
   },
   "keywords": [],
