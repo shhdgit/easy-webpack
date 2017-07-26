@@ -10,3 +10,7 @@ npm run dev
 npm run build
 ```
 
+* **Update Vendor:**
+```
+npm run dll
+```
