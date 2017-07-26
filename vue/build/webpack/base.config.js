@@ -21,19 +21,19 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.vue'],
     alias: {
-      'public': resolve('public'),
-      'src': resolve('src'),
-      'components': resolve('src/components'),
-      'ui': resolve('src/components/UI'),
-      'views': resolve('src/views'),
-      'store': resolve('src/store'),
-      'mixin': resolve('src/mixin'),
-      'api': resolve('src/api'),
-      'assets': resolve('src/assets'),
-      'config': resolve('src/config'),
-      'plugins': resolve('src/plugins'),
-      'service': resolve('src/service'),
-    }
+      public: resolve('public'),
+      src: resolve('src'),
+      components: resolve('src/components'),
+      ui: resolve('src/components/UI'),
+      views: resolve('src/views'),
+      store: resolve('src/store'),
+      mixin: resolve('src/mixin'),
+      api: resolve('src/api'),
+      assets: resolve('src/assets'),
+      config: resolve('src/config'),
+      plugins: resolve('src/plugins'),
+      service: resolve('src/service'),
+    },
   },
   module: {
     rules: [
@@ -66,16 +66,16 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: 'dist/fonts/[name].[contenthash:8].[ext]'
-        }
+          name: 'dist/fonts/[name].[contenthash:8].[ext]',
+        },
       },
-    ]
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      }
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
     }),
-  ]
+  ],
 }

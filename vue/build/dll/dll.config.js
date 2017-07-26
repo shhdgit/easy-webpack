@@ -5,7 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   entry: {
     vendor1: ['vue'],
-    vendor2: ['vue-router', 'axios', 'vuex']
+    vendor2: ['vue-router', 'axios', 'vuex'],
   },
   plugins: [
     new UglifyJsPlugin({
@@ -16,8 +16,8 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      }
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
     }),
-  ]
+  ],
 }

@@ -7,7 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./base.config')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '../..', dir)
 }
 
@@ -22,26 +22,26 @@ module.exports = merge(baseConfig, {
         test: /\.(css|less)$/,
         use: ExtractTextPlugin.extract({
           use: 'css-loader!less-loader',
-          fallback: 'style-loader'
-        })
+          fallback: 'style-loader',
+        }),
       },
       {
         test: /\.styl$/,
         use: ExtractTextPlugin.extract({
           use: 'css-loader!stylus-loader',
-          fallback: 'style-loader'
-        })
-      }
-    ]
+          fallback: 'style-loader',
+        }),
+      },
+    ],
   },
   plugins: [
     new webpack.DllReferencePlugin({
       context: resolve('dll/prod'),
-      manifest: require('../../dll/prod/vendor1.manifest.json')
+      manifest: require('../../dll/prod/vendor1.manifest.json'),
     }),
     new webpack.DllReferencePlugin({
       context: resolve('dll/prod'),
-      manifest: require('../../dll/prod/vendor2.manifest.json')
+      manifest: require('../../dll/prod/vendor2.manifest.json'),
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
@@ -50,29 +50,29 @@ module.exports = merge(baseConfig, {
           loaders: {
             css: ExtractTextPlugin.extract({
               use: 'css-loader',
-              fallback: 'vue-style-loader'
+              fallback: 'vue-style-loader',
             }),
             less: ExtractTextPlugin.extract({
               use: 'css-loader!less-loader',
-              fallback: 'vue-style-loader'
+              fallback: 'vue-style-loader',
             }),
             stylus: ExtractTextPlugin.extract({
               use: 'css-loader!stylus-loader',
-              fallback: 'vue-style-loader'
+              fallback: 'vue-style-loader',
             }),
-          }
-        }
-      }
+          },
+        },
+      },
     }),
     new ExtractTextPlugin({
       filename: 'dist/styles/[name].[contenthash:8].css',
-      allChunks: true
+      allChunks: true,
     }),
     new HtmlWebpackPlugin({
       filename: resolve('public/index.html'),
       template: resolve('src/index.prod.html'),
       inject: true,
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
     }),
     new UglifyJsPlugin({
       parallel: {
@@ -80,5 +80,5 @@ module.exports = merge(baseConfig, {
         workers: os.cpus().length,
       },
     }),
-  ]
+  ],
 })

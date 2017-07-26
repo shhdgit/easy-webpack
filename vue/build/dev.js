@@ -26,20 +26,18 @@ const devMiddleware = webpackDevMiddleware(compiler, {
   headers: { 'Access-Control-Allow-Origin': '*' },
 })
 const hotMiddleware = webpackHotMiddleware(compiler, {
-  log: () => {}
+  log: () => {},
 })
 
 // force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', function (compilation) {
-  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({ action: 'reload' })
-    cb()
-  })
-})
+compiler.plugin('compilation', compilation => compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
+  hotMiddleware.publish({ action: 'reload' })
+  cb()
+}))
 
 // proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
-  var options = proxyTable[context]
+Object.keys(proxyTable).forEach((context) => {
+  let options = proxyTable[context]
   if (typeof options === 'string') {
     options = { target: options }
   }
@@ -59,13 +57,11 @@ app.use(hotMiddleware)
 // serve pure static assets
 app.use('/', express.static('./public'))
 
-const uri = 'http://localhost:' + port
+const uri = `http://localhost:${port}`
 
-devMiddleware.waitUntilValid(function () {
-  console.log('> Listening at ' + uri + '\n')
-})
+devMiddleware.waitUntilValid(() => console.log(`> Listening at ${uri}\n`))
 
-module.exports = app.listen(port, function (err) {
+module.exports = app.listen(port, (err) => {
   if (err) {
     console.log(err)
     return
