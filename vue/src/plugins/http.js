@@ -2,15 +2,17 @@ import axios from 'axios'
 
 const httpPlugin = {}
 
-httpPlugin.install = function (Vue, config = {}) {
+httpPlugin.install = function install(Vue, config = {}) {
   if (httpPlugin.install.installed) return
   httpPlugin.install.installed = true
 
+  const vueInstance = Vue
+
   Object.assign(axios.defaults, config)
 
-  Vue.$http = axios
+  vueInstance.$http = axios
 
-  Vue.prototype.$http = axios
+  vueInstance.prototype.$http = axios
 }
 
 if (window.Vue) {

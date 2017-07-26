@@ -9,12 +9,8 @@ import 'assets/icon/iconfont.js'
 import 'assets/styles/reset.styl'
 import 'assets/styles/functional.styl'
 
-Object.keys(plugins).forEach(key => {
-  Vue.use(plugins[key])
-})
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
+Object.keys(plugins).forEach(key => Vue.use(plugins[key]))
+Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 
 new Vue({
   ...Layout,
