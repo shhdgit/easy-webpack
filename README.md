@@ -4,5 +4,6 @@
 
   2. Change project name & entry name
 
-  3. `source build/init.sh`
+  3. `sh build/init.sh`
 
+  4. `npm run dll`
