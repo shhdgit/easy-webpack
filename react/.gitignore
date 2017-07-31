@@ -1,8 +1,0 @@
-**/.idea/**
-**/.vscode/**
-**/node_modules/**
-public/*
-!public/images
-
-**/.DS_Store
-**/npm-debug.log
