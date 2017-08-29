@@ -18,6 +18,11 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        use: 'vue-loader',
+        include: resolve('src'),
+      },
+      {
         test: /\.(css|less)$/,
         use: ['style-loader', 'css-loader?sourceMap', 'less-loader'],
       },

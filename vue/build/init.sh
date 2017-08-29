@@ -45,7 +45,10 @@ npm i -D webpack \
          ora \
          chalk \
          rimraf \
-         && \
+         cssnano \
+         optimize-css-assets-webpack-plugin \
+         pug \
+      && \
 npm i vue \
       vue-router \
       axios \

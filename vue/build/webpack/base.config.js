@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = require('../../config')
 
 function resolve(dir) {
@@ -41,11 +42,6 @@ module.exports = {
         test: /\.(js|vue)$/,
         use: 'eslint-loader',
         enforce: 'pre',
-        include: resolve('src'),
-      },
-      {
-        test: /\.vue$/,
-        use: 'vue-loader',
         include: resolve('src'),
       },
       {

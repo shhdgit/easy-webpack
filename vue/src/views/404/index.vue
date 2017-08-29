@@ -1,5 +1,7 @@
-<template>
+<template lang="pug">
+div
 </template>
+
 <script>
 export default {
   data() {
@@ -8,5 +10,6 @@ export default {
   },
 }
 </script>
+
 <style lang="stylus" scoped>
 </style>

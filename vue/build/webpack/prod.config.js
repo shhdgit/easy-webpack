@@ -5,6 +5,7 @@ const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const baseConfig = require('./base.config')
 
 function resolve(dir) {
@@ -18,6 +19,14 @@ module.exports = merge(baseConfig, {
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        include: resolve('src'),
+        options: {
+          extractCSS: true,
+        },
+      },
       {
         test: /\.(css|less)$/,
         use: ExtractTextPlugin.extract({
@@ -43,27 +52,6 @@ module.exports = merge(baseConfig, {
       context: resolve('dll/prod'),
       manifest: require('../../dll/prod/vendor2.manifest.json'),
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      options: {
-        vue: {
-          loaders: {
-            css: ExtractTextPlugin.extract({
-              use: 'css-loader',
-              fallback: 'vue-style-loader',
-            }),
-            less: ExtractTextPlugin.extract({
-              use: 'css-loader!less-loader',
-              fallback: 'vue-style-loader',
-            }),
-            stylus: ExtractTextPlugin.extract({
-              use: 'css-loader!stylus-loader',
-              fallback: 'vue-style-loader',
-            }),
-          },
-        },
-      },
-    }),
     new ExtractTextPlugin({
       filename: 'dist/styles/[name].[contenthash:8].css',
       allChunks: true,
@@ -79,6 +67,11 @@ module.exports = merge(baseConfig, {
         cache: true,
         workers: os.cpus().length,
       },
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: {removeAll: true } },
+      canPrint: true
     }),
   ],
 })
