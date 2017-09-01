@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import vuexStore from 'store'
 import router from 'config/router'
-import filters from 'service/filter'
+import filters from 'utils/filter'
 import plugins from 'plugins'
 import Layout from 'components/layout/Layout'
 

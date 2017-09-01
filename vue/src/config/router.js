@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
-  scrollBehaviors(to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     let position = savedPosition
 
     if (!position) {
