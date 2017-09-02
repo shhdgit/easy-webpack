@@ -1,5 +1,0 @@
-{
-  "port": 9090,
-  "routes": "./mock/routes.json",
-  "watch": true
-}
