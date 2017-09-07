@@ -44,9 +44,10 @@
     !{component}
     img(src=img)
   ```
-- [ ] build
+- [x] build
   - [x] hash缓存控制
   - [x] 代码压缩
 - [ ] dev
+  - [x] 自动刷新
   - [ ] 热加载
 - [ ] dll

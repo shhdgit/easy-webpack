@@ -12,6 +12,9 @@ const devRules = [
       {
         loader: 'css-loader',
       },
+      {
+        loader: 'stylus-loader',
+      },
     ],
   },
 ]

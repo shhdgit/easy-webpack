@@ -23,7 +23,7 @@ module.exports = {
     outputIndex: path.resolve(dir.public, './index.html'),
     assetsRoot: dir.public,
     assetsSubDirectory: 'dist',
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
     productionSouceMap: false,
   },
   dev: {
@@ -31,7 +31,7 @@ module.exports = {
     port: 8081,
     autoOpenBrowser: false,
     assetsSubDirectory: 'dist',
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
     proxyTable: {
     },
   },
