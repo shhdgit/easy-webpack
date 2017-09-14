@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "predll": "shx rm -rf ./build/dll ./public/vendors",
-    "dll": "cross-env NODE_ENV=development webpack --config ./build/webpack/dll.config.js",
+    "predll:dev": "shx rm -rf ./dll/dev ./public/vendors/dev",
+    "dll:dev": "cross-env NODE_ENV=development webpack --config ./build/dll/dev.dll.config.js",
+    "predll:prod": "shx rm -rf ./dll/prod ./public/vendors/prod",
+    "dll:prod": "cross-env NODE_ENV=production webpack --config ./build/dll/prod.dll.config.js",
+    "dll": "npm-run-all dll:dev npm run dll:prod",
     "dev": "node build/dev.js",
     "build": "node build/build.js"
   },

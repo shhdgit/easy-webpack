@@ -6,9 +6,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrerenderSpaPlugin = require('prerender-spa-plugin')
-const dir = require('../dir_var')
-// TODO: merge config
 const baseConfig = require('./base.config')
+
+function resolve(dir) {
+  return path.join(__dirname, '../..', dir)
+}
 
 module.exports = merge(baseConfig, {
   output: {
@@ -20,7 +22,7 @@ module.exports = merge(baseConfig, {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        include: dir.src,
+        include: resolve('src'),
         options: {
           extractCSS: true,
         },
@@ -48,15 +50,22 @@ module.exports = merge(baseConfig, {
     ],
   },
   plugins: [
+    new webpack.DllReferencePlugin({
+      context: resolve('dll/prod'),
+      manifest: require('../../dll/prod/vendor1.manifest.json'),
+    }),
+    new webpack.DllReferencePlugin({
+      context: resolve('dll/prod'),
+      manifest: require('../../dll/prod/vendor2.manifest.json'),
+    }),
     new ExtractTextPlugin({
       filename: 'dist/styles/[name].[contenthash:8].css',
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
-      filename: path.resolve(dir.public, 'index.html'),
-      template: path.resolve(dir.src, 'index.html'),
+      filename: resolve('public/index.html'),
+      template: resolve('src/index.prod.html'),
       inject: true,
-      chunks: ['main'],
       chunksSortMode: 'dependency',
     }),
     new UglifyJsPlugin({
@@ -65,9 +74,9 @@ module.exports = merge(baseConfig, {
         workers: os.cpus().length,
       },
     }),
-    new PrerenderSpaPlugin(
-      path.resolve(dir.public),
-      ['/', '/404']
-    ),
+    // new PrerenderSpaPlugin(
+    //   resolve('public'),
+    //   [ '/']
+    // )
   ],
 })

@@ -3,9 +3,11 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const dir = require('../dir_var')
-// TODO: merge config
 const baseConfig = require('./base.config')
+
+function resolve(dir) {
+  return path.join(__dirname, '../..', dir)
+}
 
 // add hot-reload related code to entry chunks
 Object.keys(baseConfig.entry).forEach((name) => {
@@ -18,7 +20,7 @@ module.exports = merge(baseConfig, {
       {
         test: /\.vue$/,
         use: 'vue-loader',
-        include: dir.src,
+        include: resolve('src'),
       },
       {
         test: /\.(css|less)$/,
@@ -32,9 +34,17 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DllReferencePlugin({
+      context: resolve('dll/dev'),
+      manifest: require('../../dll/dev/vendor1.manifest.json'),
+    }),
+    new webpack.DllReferencePlugin({
+      context: resolve('dll/dev'),
+      manifest: require('../../dll/dev/vendor2.manifest.json'),
+    }),
     new HtmlWebpackPlugin({
-      filename: path.resolve(dir.public, 'index.html'),
-      template: path.resolve(dir.src, 'index.dev.html'),
+      filename: resolve('public/index.html'),
+      template: resolve('src/index.dev.html'),
       inject: true,
       chunksSortMode: 'dependency',
     }),

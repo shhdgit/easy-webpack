@@ -1,13 +1,10 @@
 <template lang="pug">
-div here is 404 page
+div#app
+  router-view
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-    }
-  },
 }
 </script>
 

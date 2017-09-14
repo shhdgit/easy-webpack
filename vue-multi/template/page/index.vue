@@ -1,9 +1,5 @@
 <template lang="pug">
 div
-  router-link(
-    :to="{ name: '404' }"
-  ) abc
-  p(@click="test") test
 </template>
 
 <script>
@@ -11,11 +7,6 @@ export default {
   data() {
     return {
     }
-  },
-
-  methods: {
-    test() {
-    },
   },
 }
 </script>

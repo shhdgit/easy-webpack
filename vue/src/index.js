@@ -1,19 +1,22 @@
 import Vue from 'vue'
-import vuexStore from 'store'
-import router from 'config/router'
-import filters from 'utils/filter'
-import plugins from 'plugins'
-import Layout from 'components/layout/Layout'
+import vuexStore from '@/store'
+import router from '@/router'
+import App from 'layout/App'
+// plugin
+import httpPlugin from 'service/httpPlugin'
 
-import 'assets/icon/iconfont.js'
-import 'assets/styles/reset.styl'
-import 'assets/styles/functional.styl'
+import '@/assets/icons/iconfont.js'
+import '@/assets/styles/reset.styl'
+import '@/assets/styles/functional.styl'
 
-Object.keys(plugins).forEach(key => Vue.use(plugins[key]))
-Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
+Vue.use(httpPlugin)
 
-new Vue({
-  ...Layout,
+const app = new Vue({
+  ...App,
   router,
   store: vuexStore,
-}).$mount('#app')
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  app.$mount('#app')
+})

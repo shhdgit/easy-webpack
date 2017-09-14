@@ -1,13 +1,15 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const dir = require('../dir_var')
-// TODO: merge config
 const config = require('../../config')
+
+function resolve(dir) {
+  return path.join(__dirname, '../..', dir)
+}
 
 module.exports = {
   entry: {
-    main: dir.src,
+    main: resolve('src'),
   },
   output: {
     path: config.build.assetsRoot,
@@ -20,14 +22,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      public: dir.public,
-      '@': dir.src,
-      api: dir.api,
-      mixins: dir.mixins,
-      components: dir.components,
-      layout: dir.layout,
-      views: dir.views,
-      service: dir.service,
     },
   },
   module: {
@@ -36,12 +30,12 @@ module.exports = {
         test: /\.(js|vue)$/,
         use: 'eslint-loader',
         enforce: 'pre',
-        include: dir.src,
+        include: resolve('src'),
       },
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: dir.src,
+        include: resolve('src'),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -67,19 +61,5 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
-    // new webpack.DllReferencePlugin({
-    //   context: path.resolve(dir.root, 'build/dll'),
-    //   manifest: path.resolve(dir.root, 'build/dll/vendor1.manifest.json'),
-    // }),
-    // new webpack.DllReferencePlugin({
-    //   context: path.resolve(dir.root, 'build/dll'),
-    //   manifest: path.resolve(dir.root, 'build/dll/vendor2.manifest.json'),
-    // }),
   ],
-  externals: {
-    vue: 'Vue',
-    vuex: 'Vuex',
-    'vue-router': 'VueRouter',
-    axios: 'axios',
-  },
 }
