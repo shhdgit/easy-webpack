@@ -5,19 +5,27 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
+function resolve(filepath) {
+  path.resolve(__dirname, '..', filepath)
+  return path.resolve(__dirname, '..', filepath)
+}
 
 module.exports = {
   devtool: isProd
     ? false
     : '#cheap-module-source-map',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: resolve('dist'),
     publicPath: '/dist/',
     filename: '[name].[chunkhash].js'
   },
   resolve: {
+    extensions: ['.js', '.vue'],
     alias: {
-      'public': path.resolve(__dirname, '../public')
+      public: resolve('public'),
+      src: resolve('src'),
+      components: resolve('src/components'),
+      views: resolve('src/views'),
     }
   },
   module: {

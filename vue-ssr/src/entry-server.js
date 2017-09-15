@@ -10,7 +10,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 export default context => {
   return new Promise((resolve, reject) => {
     const s = isDev && Date.now()
-    const { app, router, store } = createApp()
+    const { app, router, store, preFetchComponents } = createApp()
 
     const { url } = context
     const fullPath = router.resolve(url).route.fullPath
@@ -33,7 +33,7 @@ export default context => {
       // A preFetch hook dispatches a store action and returns a Promise,
       // which is resolved when the action is complete and store state has been
       // updated.
-      Promise.all(matchedComponents.map(({ asyncData }) => asyncData && asyncData({
+      Promise.all(matchedComponents.concat(preFetchComponents).map(({ asyncData }) => asyncData && asyncData({
         store,
         route: router.currentRoute
       }))).then(() => {
