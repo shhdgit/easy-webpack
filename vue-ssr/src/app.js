@@ -1,10 +1,10 @@
 import Vue from 'vue'
+import { sync } from 'vuex-router-sync'
 import App from './App.vue'
 import { createStore } from './store'
 import { createRouter } from './router'
-import { sync } from 'vuex-router-sync'
-import titleMixin from './util/titleMixin'
-import * as filters from './util/filters'
+import titleMixin from './service/titleMixin'
+import * as filters from './service/filters'
 
 // mixin for handling title
 Vue.mixin(titleMixin)
@@ -31,7 +31,7 @@ export function createApp() {
   const app = new Vue({
     router,
     store,
-    render: h => h(App)
+    render: h => h(App),
   })
 
   const preFetchComponents = []
@@ -39,5 +39,7 @@ export function createApp() {
   // expose the app, the router and the store.
   // note we are not mounting the app here, since bootstrapping will be
   // different depending on whether we are in a browser or on the server.
-  return { app, router, store, preFetchComponents }
+  return {
+    app, router, store, preFetchComponents,
+  }
 }

@@ -1,31 +1,26 @@
+import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+// first screen in app.js
+import HomeView from 'views/HomeView'
+// lazy load
+const NotfoundView = import(/* webpackChunkName: "rest" */ 'views/NotfoundView')
+
+Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
   scrollBehavior(to, from, savedPosition) {
-    let position = savedPosition
-
-    if (!position) {
-      position = { x: 0, y: 0 }
+    if (!savedPosition) {
+      savedPosition = { x: 0, y: 0 }
     }
 
-    return position
+    return savedPosition
   },
   routes: [
-    {
-      name: 'home',
-      path: '/',
-      component: () => import(/* webpackChunkName: "1screnn" */ 'views/home'),
-    },
-    {
-      name: '404',
-      path: '/404',
-      component: () => import(/* webpackChunkName: "1screnn" */ 'views/404'),
-    },
-    {
-      path: '*',
-      redirect: '/404',
-    },
+    { name: 'home', path: '/', component: HomeView },
+    { name: '404', path: '/404', component: NotfoundView },
+    { path: '*', redirect: '/404' },
   ],
 })
 

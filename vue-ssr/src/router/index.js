@@ -1,26 +1,28 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+// first screen in app.js
+import LoginView from 'views/LoginView'
+// route-level code splitting, lazy load
+const NotfoundView = import(/* webpackChunkName: "rest" */ 'views/NotfoundView')
 
-// route-level code splitting
-const LoginView = () => import('views/LoginView.vue')
+Vue.use(VueRouter)
 
-export function createRouter () {
-  return new Router({
+export function createRouter() {
+  return new VueRouter({
     mode: 'history',
     scrollBehavior(to, from, savedPosition) {
-      let position = savedPosition
-
-      if (!position) {
-        position = { x: 0, y: 0 }
+      if (!savedPosition) {
+        savedPosition = { x: 0, y: 0 }
       }
 
-      return position
+      return savedPosition
     },
     routes: [
       { path: '/login', component: LoginView },
+      { name: '404', path: '/404', component: NotfoundView },
       { path: '/', redirect: '/login' },
-    ]
+      { path: '&', redirect: '/404' },
+    ],
   })
 }

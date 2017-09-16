@@ -39,14 +39,14 @@ const config = merge(base, {
       name: 'manifest'
     }),
     new VueSSRClientPlugin()
-  ]
+  ],
 })
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
     // auto generate service worker
     new SWPrecachePlugin({
-      cacheId: 'vue-hn',
+      cacheId: 'vue-app',
       filename: 'service-worker.js',
       minify: true,
       dontCacheBustUrlsMatching: /./,
@@ -56,18 +56,10 @@ if (process.env.NODE_ENV === 'production') {
           urlPattern: '/',
           handler: 'networkFirst'
         },
-        {
-          urlPattern: /\/(top|new|show|ask|jobs)/,
-          handler: 'networkFirst'
-        },
-        {
-          urlPattern: '/item/:id',
-          handler: 'networkFirst'
-        },
-        {
-          urlPattern: '/user/:id',
-          handler: 'networkFirst'
-        }
+        // {
+        //   urlPattern: /\/(top|new|show|ask|jobs)/,
+        //   handler: 'networkFirst'
+        // },
       ]
     })
   )

@@ -6,7 +6,6 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 function resolve(filepath) {
-  path.resolve(__dirname, '..', filepath)
   return path.resolve(__dirname, '..', filepath)
 }
 
@@ -22,15 +21,23 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
+      '@': resolve('src'),
       public: resolve('public'),
-      src: resolve('src'),
+      api: resolve('src/api'),
       components: resolve('src/components'),
       views: resolve('src/views'),
+      service: resolve('src/service'),
     }
   },
   module: {
     noParse: /es6-promise\.js$/, // avoid webpack shimming process
     rules: [
+      {
+        test: /\.(js|vue)$/,
+        use: 'eslint-loader',
+        enforce: 'pre',
+        exclude: /node_modules/,
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',

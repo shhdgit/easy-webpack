@@ -1,13 +1,16 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const dir = require('../dir_var')
 // TODO: merge config
-const config = require('../../config')
+const config = require('../config')
+
+function resolve(filepath) {
+  return path.resolve(__dirname, '..', filepath)
+}
 
 module.exports = {
   entry: {
-    main: dir.src,
+    app: resolve('src/app'),
   },
   output: {
     path: config.build.assetsRoot,
@@ -20,14 +23,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      public: dir.public,
-      '@': dir.src,
-      api: dir.api,
-      mixins: dir.mixins,
-      components: dir.components,
-      layout: dir.layout,
-      views: dir.views,
-      service: dir.service,
+      '@': resolve('src'),
+      public: resolve('public'),
+      api: resolve('src/api'),
+      components: resolve('src/components'),
+      views: resolve('src/views'),
+      service: resolve('src/service'),
     },
   },
   module: {
@@ -36,12 +37,12 @@ module.exports = {
         test: /\.(js|vue)$/,
         use: 'eslint-loader',
         enforce: 'pre',
-        include: dir.src,
+        exclude: /node_modules/,
       },
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: dir.src,
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -68,18 +69,16 @@ module.exports = {
       },
     }),
     // new webpack.DllReferencePlugin({
-    //   context: path.resolve(dir.root, 'build/dll'),
-    //   manifest: path.resolve(dir.root, 'build/dll/vendor1.manifest.json'),
+    //   context: resolve('build/dll),
+    //   manifest: resolve('build/dll/vendor1.manifest.json'),
     // }),
     // new webpack.DllReferencePlugin({
-    //   context: path.resolve(dir.root, 'build/dll'),
-    //   manifest: path.resolve(dir.root, 'build/dll/vendor2.manifest.json'),
+    //   context: resolve('build/dll'),
+    //   manifest: resolve('build/dll/vendor2.manifest.json'),
     // }),
   ],
   externals: {
     vue: 'Vue',
-    vuex: 'Vuex',
-    'vue-router': 'VueRouter',
     axios: 'axios',
   },
 }

@@ -1,5 +1,6 @@
-import authApi from './auth'
+import { createAPI } from './create-api'
+import auth from './module/auth'
 
-export {
-  authApi,
-}
+const api = createAPI({ baseURL: '/api' })
+
+export const authApi = auth(api)

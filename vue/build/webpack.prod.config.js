@@ -5,10 +5,14 @@ const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const PrerenderSpaPlugin = require('prerender-spa-plugin')
-const dir = require('../dir_var')
 // TODO: merge config
-const baseConfig = require('./base.config')
+const baseConfig = require('./webpack.base.config')
+
+function resolve(filepath) {
+  return path.resolve(__dirname, '..', filepath)
+}
 
 module.exports = merge(baseConfig, {
   output: {
@@ -20,7 +24,7 @@ module.exports = merge(baseConfig, {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        include: dir.src,
+        include: resolve('src'),
         options: {
           extractCSS: true,
         },
@@ -53,8 +57,8 @@ module.exports = merge(baseConfig, {
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
-      filename: path.resolve(dir.public, 'index.html'),
-      template: path.resolve(dir.src, 'index.html'),
+      filename: resolve('public/index.html'),
+      template: resolve('src/index.html'),
       inject: true,
       chunks: ['main'],
       chunksSortMode: 'dependency',
@@ -66,8 +70,25 @@ module.exports = merge(baseConfig, {
       },
     }),
     new PrerenderSpaPlugin(
-      path.resolve(dir.public),
+      resolve('public'),
       ['/', '/404']
     ),
+    new SWPrecachePlugin({
+      cacheId: 'vue-app',
+      filename: 'service-worker.js',
+      minify: true,
+      dontCacheBustUrlsMatching: /./,
+      staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
+      runtimeCaching: [
+        {
+          urlPattern: '/',
+          handler: 'networkFirst'
+        },
+        // {
+        //   urlPattern: /\/(top|new|show|ask|jobs)/,
+        //   handler: 'networkFirst'
+        // },
+      ]
+    })
   ],
 })

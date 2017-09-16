@@ -11,7 +11,7 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const proxyMiddleware = require('http-proxy-middleware')
-const webpackConfig = require('./webpack/dev.config')
+const webpackConfig = require('./webpack.dev.config')
 
 const port = process.env.PORT || config.dev.port
 const autoOpenBrowser = !!config.dev.autoOpenBrowser

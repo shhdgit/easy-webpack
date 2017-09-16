@@ -1,8 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const config = require('../../config')
-const dir = require('../dir_var')
+const config = require('../config')
+
+function resolve(filepath) {
+  return path.resolve(__dirname, '..', filepath)
+}
 
 module.exports = {
   entry: {
@@ -17,13 +20,13 @@ module.exports = {
   },
   plugins: [
     new webpack.DllPlugin({
-      context: path.resolve(dir.root, 'build/dll'),                   // 必填项，用来标志manifest中的路径
-      path: path.resolve(dir.root, 'build/dll/[name].manifest.json'), // 必填项，存放manifest的路径
+      context: resolve('build/dll'),                   // 必填项，用来标志manifest中的路径
+      path: resolve('build/dll/[name].manifest.json'), // 必填项，存放manifest的路径
       name: 'vendor_[chunkhash:8]',                                // 必填项，manifest的name
     }),
     new HtmlWebpackPlugin({
-      filename: path.resolve(dir.root, 'build/dll/index.dev.html'),
-      template: path.resolve(dir.src, 'index.html'),
+      filename: resolve('build/dll/index.dev.html'),
+      template: resolve('src/index.html'),
       inject: true,
       chunksSortMode: 'dependency',
     }),
