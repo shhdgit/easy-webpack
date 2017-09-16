@@ -91,4 +91,8 @@ module.exports = merge(baseConfig, {
       ]
     })
   ],
+  externals: {
+    vue: 'Vue',
+    axios: 'axios',
+  },
 })

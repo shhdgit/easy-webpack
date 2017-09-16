@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 // first screen in app.js
 import LoginView from 'views/LoginView'
 // route-level code splitting, lazy load
-const NotfoundView = import(/* webpackChunkName: "rest" */ 'views/NotfoundView')
+const NotfoundView = () => import(/* webpackChunkName: "rest" */ 'views/NotfoundView')
 
 Vue.use(VueRouter)
 

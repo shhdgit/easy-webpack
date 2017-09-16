@@ -68,6 +68,9 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest'
+    }),
     // new webpack.DllReferencePlugin({
     //   context: resolve('build/dll),
     //   manifest: resolve('build/dll/vendor1.manifest.json'),
@@ -77,8 +80,4 @@ module.exports = {
     //   manifest: resolve('build/dll/vendor2.manifest.json'),
     // }),
   ],
-  externals: {
-    vue: 'Vue',
-    axios: 'axios',
-  },
 }
