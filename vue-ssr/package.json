@@ -4,6 +4,8 @@
   "author": "Suhaha <jklopsdfw@gmail.com>",
   "private": true,
   "scripts": {
+    "predll": "shx rm -rf ./build/dll ./public/vendors",
+    "dll": "cross-env NODE_ENV=production webpack --config ./build/webpack.dll.config.js",
     "dev": "node server",
     "start": "cross-env NODE_ENV=production node server",
     "build": "rimraf dist && npm run build:client && npm run build:server",
@@ -48,6 +50,7 @@
     "glob": "^7.1.1",
     "pug": "^2.0.0-rc.4",
     "rimraf": "^2.6.1",
+    "shx": "^0.2.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "sw-precache-webpack-plugin": "^0.10.1",
