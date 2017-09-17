@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-// TODO: merge config
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const config = require('../config')
 
 function resolve(filepath) {
@@ -71,13 +71,23 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
     }),
+    // ***** open dll *****
     // new webpack.DllReferencePlugin({
-    //   context: resolve('build/dll),
-    //   manifest: resolve('build/dll/vendor1.manifest.json'),
+    //   context: __dirname,
+    //   manifest: resolve('build/dll/vendor-manifest.json'),
     // }),
-    // new webpack.DllReferencePlugin({
-    //   context: resolve('build/dll'),
-    //   manifest: resolve('build/dll/vendor2.manifest.json'),
+    // new AddAssetHtmlPlugin({
+    //   includeSourcemap: false,
+    //   outputPath: '/vendors',
+    //   publicPath: '/vendors',
+    //   filepath: resolve('public/vendors/*.dll.js'),
     // }),
+    // ********************
   ],
+  externals: {
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter',
+    axios: 'axios',
+  },
 }

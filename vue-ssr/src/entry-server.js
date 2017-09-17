@@ -18,11 +18,11 @@ export default context => {
     } = createApp()
 
     const { url } = context
-    // const { fullPath } = router.resolve(url).route
+    const { fullPath } = router.resolve(url).route
 
-    // if (fullPath !== url) {
-    //   reject({ url: fullPath })
-    // }
+    if (fullPath !== url) {
+      reject({ url: fullPath })
+    }
 
     // set router's location
     router.push(url)

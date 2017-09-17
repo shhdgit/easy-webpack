@@ -7,7 +7,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const PrerenderSpaPlugin = require('prerender-spa-plugin')
-// TODO: merge config
 const baseConfig = require('./webpack.base.config')
 
 function resolve(filepath) {
@@ -60,7 +59,6 @@ module.exports = merge(baseConfig, {
       filename: resolve('public/index.html'),
       template: resolve('src/index.html'),
       inject: true,
-      chunks: ['main'],
       chunksSortMode: 'dependency',
     }),
     new UglifyJsPlugin({
@@ -91,8 +89,4 @@ module.exports = merge(baseConfig, {
       ]
     })
   ],
-  externals: {
-    vue: 'Vue',
-    axios: 'axios',
-  },
 })

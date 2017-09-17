@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // first screen in app.js
@@ -6,7 +6,7 @@ import HomeView from 'views/HomeView'
 // lazy load
 const NotfoundView = () => import(/* webpackChunkName: "rest" */ 'views/NotfoundView')
 
-Vue.use(VueRouter)
+// Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
