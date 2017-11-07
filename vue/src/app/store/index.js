@@ -1,8 +1,10 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import Vuex from 'vuex'
 import app from './module/app'
 
-// Vue.use(Vuex)
+if (process.env.NODE_ENV === 'development') {
+  Vue.use(Vuex)
+}
 
 const store = new Vuex.Store({
   modules: {

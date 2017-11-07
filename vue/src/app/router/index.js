@@ -1,12 +1,14 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // first screen in app.js
-import HomeView from 'views/HomeView'
+import HomeView from 'views/HomeView.vue'
 // lazy load
-const NotfoundView = () => import(/* webpackChunkName: "rest" */ 'views/NotfoundView')
+const NotfoundView = () => import(/* webpackChunkName: "rest" */ 'views/NotfoundView.vue')
 
-// Vue.use(VueRouter)
+if (process.env.NODE_ENV === 'development') {
+  Vue.use(VueRouter)
+}
 
 const router = new VueRouter({
   mode: 'history',

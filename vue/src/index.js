@@ -1,14 +1,13 @@
 import Vue from 'vue'
+
 import vuexStore from '@/store'
 import router from '@/router'
-// plugin
+import App from '@/App'
 import httpPlugin from 'service/httpPlugin'
 
-import '@/assets/icons/iconfont.js'
-import '@/assets/styles/reset.styl'
-import '@/assets/styles/functional.styl'
-
-import App from './App.vue'
+import './assets/icons/iconfont.js'
+import './assets/styles/reset.styl'
+import './assets/styles/functional.styl'
 
 Vue.use(httpPlugin)
 

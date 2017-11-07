@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+
 const config = require('../config')
 
 function resolve(filepath) {
@@ -10,7 +11,7 @@ function resolve(filepath) {
 
 module.exports = {
   entry: {
-    app: resolve('src/app'),
+    index: resolve('src/index'),
   },
   output: {
     path: config.build.assetsRoot,
@@ -21,14 +22,14 @@ module.exports = {
       : config.dev.assetsPublicPath,
   },
   resolve: {
-    extensions: ['.js', '.vue'],
+    extensions: ['.js', '.ts', '.vue', '.json'],
     alias: {
-      '@': resolve('src'),
+      '@': resolve('src/app'),
       public: resolve('public'),
-      api: resolve('src/api'),
-      components: resolve('src/components'),
-      views: resolve('src/views'),
-      service: resolve('src/service'),
+      api: resolve('src/app/api'),
+      components: resolve('src/app/components'),
+      views: resolve('src/app/views'),
+      service: resolve('src/app/service'),
     },
   },
   module: {
@@ -40,7 +41,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: 'babel-loader',
         exclude: /node_modules/,
       },
@@ -71,23 +72,5 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
     }),
-    // ***** open dll *****
-    // new webpack.DllReferencePlugin({
-    //   context: __dirname,
-    //   manifest: resolve('build/dll/vendor-manifest.json'),
-    // }),
-    // new AddAssetHtmlPlugin({
-    //   includeSourcemap: false,
-    //   outputPath: '/vendors',
-    //   publicPath: '/vendors',
-    //   filepath: resolve('public/vendors/*.dll.js'),
-    // }),
-    // ********************
   ],
-  externals: {
-    vue: 'Vue',
-    vuex: 'Vuex',
-    'vue-router': 'VueRouter',
-    axios: 'axios',
-  },
 }

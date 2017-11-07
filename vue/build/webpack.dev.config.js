@@ -3,6 +3,8 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+
 const baseConfig = require('./webpack.base.config')
 
 function resolve(filepath) {
@@ -34,6 +36,18 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    // ***** dll *****
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: resolve('build/dll/vendor-manifest.json'),
+    }),
+    new AddAssetHtmlPlugin({
+      includeSourcemap: false,
+      outputPath: '/vendors',
+      publicPath: '/vendors',
+      filepath: resolve('public/vendors/*.dll.js'),
+    }),
+    // ********************
     new HtmlWebpackPlugin({
       filename: resolve('public/index.html'),
       template: resolve('src/index.dev.html'),

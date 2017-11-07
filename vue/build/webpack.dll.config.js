@@ -3,6 +3,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
 const config = require('../config')
 
 function resolve(filepath) {
@@ -11,7 +12,7 @@ function resolve(filepath) {
 
 module.exports = {
   entry: {
-    vendor: ['vue-router'],
+    vendor: ['axios', 'vue', 'vue-router', 'vuex'],
   },
   output: {
     path: config.build.assetsRoot,
@@ -25,16 +26,16 @@ module.exports = {
       path: resolve('build/dll/[name]-manifest.json'), // 必填项，存放manifest的路径
       name: '[name]_[hash:8]',                                // 必填项，manifest的name
     }),
-    new UglifyJsPlugin({
-      parallel: {
-        cache: true,
-        workers: os.cpus().length,
-      },
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
-    }),
+    // new UglifyJsPlugin({
+    //   parallel: {
+    //     cache: true,
+    //     workers: os.cpus().length,
+    //   },
+    // }),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    //   },
+    // }),
   ],
 }

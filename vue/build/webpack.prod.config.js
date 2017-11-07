@@ -67,10 +67,13 @@ module.exports = merge(baseConfig, {
         workers: os.cpus().length,
       },
     }),
-    new PrerenderSpaPlugin(
-      resolve('public'),
-      ['/', '/404']
-    ),
+    // TODOs: completed pre-render
+    // ***** pre-render *****
+    // new PrerenderSpaPlugin(
+    //   resolve('public'),
+    //   ['/', '/404']
+    // ),
+    // ***** service worker *****
     new SWPrecachePlugin({
       cacheId: 'vue-app',
       filename: 'service-worker.js',
@@ -89,4 +92,10 @@ module.exports = merge(baseConfig, {
       ]
     })
   ],
+  externals: {
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter',
+    axios: 'axios',
+  },
 })
