@@ -30,8 +30,8 @@ module.exports = merge(baseConfig, {
         },
       },
       {
-        test: /\.(css|less)$/,
-        use: ['style-loader', 'css-loader?sourceMap', 'less-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader?sourceMap'],
       },
       {
         test: /\.styl$/,

@@ -32,7 +32,7 @@ module.exports = merge(baseConfig, {
         },
       },
       {
-        test: /\.(css|styl)$/,
+        test: /\.styl$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -47,6 +47,23 @@ module.exports = merge(baseConfig, {
             },
             {
               loader: 'stylus-loader',
+            },
+          ]
+        }),
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
             },
           ]
         }),

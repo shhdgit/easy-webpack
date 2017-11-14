@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = require('../config')
 
@@ -39,11 +40,21 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsSuffixTo: [/\.vue$/]
+            },
+          },
+        ],
+        // loader: 'ts-loader',
+        // options: {
+        //   appendTsSuffixTo: [/\.vue$/]
+        // }
       },
       {
         test: /\.jsx?$/,
@@ -74,6 +85,9 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
+    new CopyWebpackPlugin([
+      { from: resolve('src/assets/images'), to: resolve('public/dist/images') }
+    ]),
     // webpack bootstrap logic
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
