@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-const httpPlugin = {}
+const httpPlugin: any = {}
 
 httpPlugin.install = function install(Vue, config = {}) {
-  if (httpPlugin.install.installed) return
+  if (httpPlugin.install.installed) {
+    return
+  }
   httpPlugin.install.installed = true
 
   const vueInstance = Vue
@@ -15,8 +17,8 @@ httpPlugin.install = function install(Vue, config = {}) {
   vueInstance.prototype.$http = axios
 }
 
-if (window.Vue) {
-  window.Vue.use(httpPlugin)
+if ((window as any).Vue) {
+  (window as any).Vue.use(httpPlugin)
 }
 
 export default httpPlugin
