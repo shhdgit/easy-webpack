@@ -14,10 +14,10 @@
     "experimentalDecorators": true,
     "allowUnreachableCode": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["app/*"],
-      "src/*": ["*"]
+      "@/*": ["src/app/*"],
+      "src/*": ["src/*"]
     }
   }
 }

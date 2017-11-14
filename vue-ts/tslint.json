@@ -12,6 +12,7 @@
     "member-access": [true, "no-public"],
     "trailing-comma": false,
     "arrow-parens": false,
+    "interface-name": false,
     "no-implicit-dependencies": false,
     "no-submodule-imports": false,
     "no-consecutive-blank-lines": false,
