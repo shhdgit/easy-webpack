@@ -1,0 +1,20 @@
+{
+  "extends": "tslint:latest",
+  "globals": {
+    "require": true
+  },
+  "rules": {
+    "semicolon": false,
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "member-access": [true, "no-public"],
+    "trailing-comma": false,
+    "arrow-parens": false,
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "no-consecutive-blank-lines": false,
+    "space-before-function-paren": false
+  }
+}
