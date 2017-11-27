@@ -10,6 +10,10 @@
   },
   "keywords": [],
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "ssh://"
+  },
   "license": "MIT",
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^2.1.2",
