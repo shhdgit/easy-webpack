@@ -5,9 +5,9 @@ import router from '@/router'
 import httpPlugin from '@/service/httpPlugin'
 import vuexStore from '@/store'
 
-import './assets/icons/iconfont.js'
-import './assets/styles/functional.styl'
-import './assets/styles/reset.styl'
+import 'src/assets/icons/iconfont.js'
+import 'src/assets/styles/functional.styl'
+import 'src/assets/styles/reset.styl'
 
 Vue.use(httpPlugin)
 

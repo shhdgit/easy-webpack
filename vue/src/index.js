@@ -3,11 +3,11 @@ import Vue from 'vue'
 import vuexStore from '@/store'
 import router from '@/router'
 import App from '@/App'
-import httpPlugin from 'service/httpPlugin'
+import httpPlugin from '@/service/httpPlugin'
 
-import './assets/icons/iconfont.js'
-import './assets/styles/reset.styl'
-import './assets/styles/functional.styl'
+import 'src/assets/icons/iconfont.js'
+import 'src/assets/styles/reset.styl'
+import 'src/assets/styles/functional.styl'
 
 Vue.use(httpPlugin)
 
