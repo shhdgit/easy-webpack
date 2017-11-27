@@ -1,5 +1,5 @@
-<template lang="pug">
-div
+<template>
+<p>HomeView work!</p>
 </template>
 
 <style lang="stylus" scoped>

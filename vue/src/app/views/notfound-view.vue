@@ -1,5 +1,5 @@
-<template lang="pug">
-div here is 404 page
+<template>
+<p>notfound-view work!</p>
 </template>
 
 <script>

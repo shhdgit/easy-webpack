@@ -1,5 +1,5 @@
-<template lang="pug">
-div test
+<template>
+<p>home-view work!</p>
 </template>
 
 <script>
