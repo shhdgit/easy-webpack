@@ -1,8 +1,7 @@
 {
-  "name": "easy-vue",
-  "version": "1.0.0",
+  "name": "vue-project",
+  "version": "0.0.0",
   "description": "",
-  "main": "app.js",
   "scripts": {
     "predll": "shx rm -rf ./build/dll ./public/vendors",
     "dll": "webpack --config ./build/webpack.dll.config.js",
@@ -11,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^2.1.2",
     "autoprefixer": "^7.1.4",
@@ -24,6 +23,7 @@
     "babel-runtime": "^6.26.0",
     "chalk": "^2.1.0",
     "connect-history-api-fallback": "^1.3.0",
+    "copy-webpack-plugin": "^4.2.0",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",

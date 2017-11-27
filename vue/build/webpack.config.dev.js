@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
-const baseConfig = require('./webpack.base.config')
+const baseConfig = require('./webpack.config.base')
 
 function resolve(filepath) {
   return path.resolve(__dirname, '..', filepath)
@@ -25,8 +25,8 @@ module.exports = merge(baseConfig, {
         include: resolve('src'),
       },
       {
-        test: /\.(css|less)$/,
-        use: ['style-loader', 'css-loader?sourceMap', 'less-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader?sourceMap'],
       },
       {
         test: /\.styl$/,

@@ -6,8 +6,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
-const PrerenderSpaPlugin = require('prerender-spa-plugin')
-const baseConfig = require('./webpack.base.config')
+// const PrerenderSpaPlugin = require('prerender-spa-plugin')
+
+const baseConfig = require('./webpack.config.base')
 
 function resolve(filepath) {
   return path.resolve(__dirname, '..', filepath)
@@ -74,23 +75,23 @@ module.exports = merge(baseConfig, {
     //   ['/', '/404']
     // ),
     // ***** service worker *****
-    new SWPrecachePlugin({
-      cacheId: 'vue-app',
-      filename: 'service-worker.js',
-      minify: true,
-      dontCacheBustUrlsMatching: /./,
-      staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
-      runtimeCaching: [
-        {
-          urlPattern: '/',
-          handler: 'networkFirst'
-        },
-        // {
-        //   urlPattern: /\/(top|new|show|ask|jobs)/,
-        //   handler: 'networkFirst'
-        // },
-      ]
-    })
+    // new SWPrecachePlugin({
+    //   cacheId: 'vue-app',
+    //   filename: 'service-worker.js',
+    //   minify: true,
+    //   dontCacheBustUrlsMatching: /./,
+    //   staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
+    //   runtimeCaching: [
+    //     {
+    //       urlPattern: '/',
+    //       handler: 'networkFirst'
+    //     },
+    //     // {
+    //     //   urlPattern: /\/(top|new|show|ask|jobs)/,
+    //     //   handler: 'networkFirst'
+    //     // },
+    //   ]
+    // }),
   ],
   externals: {
     vue: 'Vue',

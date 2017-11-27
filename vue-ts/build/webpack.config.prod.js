@@ -7,6 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 // const PrerenderSpaPlugin = require('prerender-spa-plugin')
+
 const baseConfig = require('./webpack.config.base')
 
 function resolve(filepath) {

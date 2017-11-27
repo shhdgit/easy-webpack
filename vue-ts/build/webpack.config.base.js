@@ -28,6 +28,8 @@ module.exports = {
     alias: {
       'src': resolve('src'),
       '@': resolve('src/app'),
+      'assets': resolve('src/assets'),
+      'utils': resolve('src/utils'),
     },
   },
   module: {

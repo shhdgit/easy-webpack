@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = require('../config')
 
@@ -22,14 +23,12 @@ module.exports = {
       : config.dev.assetsPublicPath,
   },
   resolve: {
-    extensions: ['.js', '.ts', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json'],
     alias: {
+      'src': resolve('src'),
       '@': resolve('src/app'),
-      public: resolve('public'),
-      api: resolve('src/app/api'),
-      components: resolve('src/app/components'),
-      views: resolve('src/app/views'),
-      service: resolve('src/app/service'),
+      'assets': resolve('src/assets'),
+      'utils': resolve('src/utils'),
     },
   },
   module: {
@@ -69,8 +68,24 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
+    new CopyWebpackPlugin([
+      { from: resolve('src/assets/images'), to: resolve('public/dist/images') }
+    ]),
+    // webpack bootstrap logic
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest'
+      name: 'manifest',
+      minChunks: Infinity,
+    }),
+    // common module
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      filename: 'common.js',
+      minChunks: 3,
+      children: true,
+      // (选择 chunks，或者忽略该项设置以选择全部 chunks)
+      // names: ["app", "subPageA"],
+      // (创建一个异步 公共chunk)
+      // async: true,
     }),
   ],
 }
