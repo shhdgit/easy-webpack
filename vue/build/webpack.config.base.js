@@ -12,7 +12,7 @@ function resolve(filepath) {
 
 module.exports = {
   entry: {
-    index: resolve('src/index'),
+    main: resolve('src/main'),
   },
   output: {
     path: config.build.assetsRoot,
