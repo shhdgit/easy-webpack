@@ -3,7 +3,7 @@
 * **Git Init**
 
 ```shell
-git clone ssh://git@git.elemenx.com:2233/eshop/b2c/fe.git
+git clone ssh://git@
 git submodule init
 git submodule update
 ```
@@ -11,7 +11,7 @@ git submodule update
 or
 
 ```shell
-git clone --recursive ssh://git@git.elemenx.com:2233/eshop/b2c/fe.git
+git clone --recursive ssh://git@
 git submodule update
 ```
 
