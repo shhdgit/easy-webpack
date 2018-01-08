@@ -1,12 +1,11 @@
-<template lang="pug">
-div here is 404 page
+<template>
+<div>test</div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-    }
+    return {}
   },
 }
 </script>

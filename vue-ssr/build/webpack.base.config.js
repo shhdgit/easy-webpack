@@ -21,12 +21,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      '@': resolve('src'),
-      public: resolve('public'),
-      api: resolve('src/api'),
-      components: resolve('src/components'),
-      views: resolve('src/views'),
-      service: resolve('src/service'),
+      'src': resolve('src'),
+      '@': resolve('src/app'),
+      assets: resolve('assets'),
     }
   },
   module: {
@@ -64,6 +61,15 @@ module.exports = {
               fallback: 'vue-style-loader'
             })
           : ['vue-style-loader', 'css-loader']
+      },
+      {
+        test: /\.styl$/,
+        use: isProd
+          ? ExtractTextPlugin.extract({
+              use: ['css-loader?minimize', 'stylus-loader'],
+              fallback: 'vue-style-loader'
+            })
+          : ['vue-style-loader', 'css-loader', 'stylus-loader']
       }
     ]
   },

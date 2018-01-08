@@ -5,9 +5,14 @@
     "node": true,
     "es6": true
   },
-  "parser": "babel-eslint",
-  "extends": ["airbnb-base"],
-  "plugins": ["vue"],
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "sourceType": "module"
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:vue/essential"
+  ],
   "rules": {
     "semi": ["error", "never"],
     "import/no-unresolved": "off",

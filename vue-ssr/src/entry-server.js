@@ -45,6 +45,7 @@ export default context => {
           route: router.currentRoute,
         })))
         .then(() => {
+          // eslint-disable-next-line
           isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
           // After all preFetch hooks are resolved, our store is now
           // filled with the state needed to render the app.

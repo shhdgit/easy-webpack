@@ -1,6 +1,8 @@
 import 'es6-promise/auto'
 import Vue from 'vue'
-import ProgressBar from 'components/ProgressBar'
+
+import ProgressBar from '@/components/ProgressBar'
+
 import { createApp } from './app'
 
 // global progress bar
