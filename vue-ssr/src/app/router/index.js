@@ -22,7 +22,7 @@ export function createRouter() {
       { path: '/login', component: LoginView },
       { name: '404', path: '/404', component: NotfoundView },
       { path: '/', redirect: '/login' },
-      { path: '&', redirect: '/404' },
+      { path: '*', redirect: '/404' },
     ],
   })
 }
