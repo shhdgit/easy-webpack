@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 // first screen in app.js
 import LoginView from '@/views/LoginView'
 // route-level code splitting, lazy load
-const NotfoundView = () => import(/* webpackChunkName: "rest" */ '@/views/NotfoundView')
+// const = () => import(/* webpackChunkName: "rest" */ '@/views/')
 
 Vue.use(VueRouter)
 
@@ -20,9 +20,7 @@ export function createRouter() {
     },
     routes: [
       { path: '/login', component: LoginView },
-      { name: '404', path: '/404', component: NotfoundView },
       { path: '/', redirect: '/login' },
-      { path: '*', redirect: '/404' },
     ],
   })
 }
