@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import { sync } from 'vuex-router-sync'
-import App from './App.vue'
-import { createStore } from './store'
-import { createRouter } from './router'
-import titleMixin from './service/titleMixin'
-import * as filters from './service/filters'
+
+import App from '@/App.vue'
+import { createStore } from '@/store'
+import { createRouter } from '@/router'
+import titleMixin from '@/service/titleMixin'
+import * as filters from '@/service/filters'
+
+import './styles.styl'
 
 // mixin for handling title
 Vue.mixin(titleMixin)
